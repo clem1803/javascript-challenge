@@ -11,6 +11,7 @@ var button = d3.select("#filter-btn");
 // Select the form
 var input = d3.select("#datetime");
 var tBody = d3.select("tbody");
+var inputCity = d3.select("#cityy");
 
 // Create event handlers 
 button.on("click", runEnter);
@@ -20,7 +21,9 @@ function runEnter() {
     var inputValue = input.property("value");
     console.log(inputValue);
 
-    var filteredData = tableData.filter(ufo => Date.parse(ufo.datetime) >= Date.parse(inputValue));
+    var inputCityValue = inputCity.property("value");
+
+    var filteredData = tableData.filter(ufo => Date.parse(ufo.datetime) >= Date.parse(inputValue) || ufo.city === inputCityValue);
 
     console.log(filteredData);
 
